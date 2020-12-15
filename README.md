@@ -11,6 +11,8 @@ This package allows the user to experience the magical world of Harry Potter. By
 The user begins using the package by initiating themselves as a wizard (object in the wizard class) and follows printed instructions from there onwards. 
 
 ## Map of Steps:
+**Important**: To start using the package, write "from potterworld import \*", If you just write "import potterworld", the package will not work properly. 
+
 The wizard will perform the following tasks in order:
 
 1. Initiate the wizard
