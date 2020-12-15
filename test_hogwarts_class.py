@@ -28,8 +28,8 @@ class mytest_hogwarts(unittest.TestCase):
         self.assertEqual(self.student.Golden_Galleons, 1)
         self.student.gringotts(14.5)
         self.assertEqual(self.student.Silver_Sickles, 1)
-        self.student.gringotts(0.5)
-        self.assertEqual(self.student.Bronze_Knuts, 1) 
+        self.student.gringotts(1.5)
+        self.assertEqual(self.student.Bronze_Knuts, 3) 
         self.student.gringotts(2000)
         self.assertEqual(self.student.Golden_Galleons, 8)
         self.assertEqual(self.student.Silver_Sickles, 1)
@@ -37,6 +37,7 @@ class mytest_hogwarts(unittest.TestCase):
         
     def test_get_wand(self):
         print("\ntest get_wand\n")
+        self.student.gringotts(2000)
         (wood_type, core, length) = self.student.get_wand()
         self.assertIn(wood_type, ['Ash', 'Black Walnut', 'Cedar', 'Cherry', 'Elm', 'Hawthorn', 'Poplar', 'Red Oak', 'Sycamore', 'Walnut'])
         self.assertIn(core, ['Unicorn Hair', 'Dragon Heart String', 'Pheonix Feather'])
