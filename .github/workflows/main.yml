@@ -1,0 +1,47 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI-potterworld
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  potterworld_build:
+    name: running unit tests 
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: setup python
+        uses: actions/setup-python@v2
+        with: 
+          python-version: 3.8
+          
+      # Install libraries necessary for test
+      - name: install dependencies
+        run:
+           python3 -m pip install --upgrade pip
+           pip install numpy==1.19.0
+           
+      - name: run test script
+        run: 
+          python test_hogwarts_class.py
+          
+          
+      - name: run test script two
+        run: 
+          python test_spells_ni.py
+
