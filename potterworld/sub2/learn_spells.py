@@ -35,10 +35,13 @@ class learn_spells(spells):
         valid_set = ('l','r','u','d')
         exit_code = False
         while True:
-            user_input = input("Enter your favorite wand movement pattern. (input x if you do not want to learn a special spell): ")  
-            if user_input.lower() == 'x':
-                movement = 'random'
-                break
+            try:
+                user_input = input("Enter your favorite wand movement pattern. (input x if you do not want to learn a special spell): ")  
+                if user_input.lower() == 'x':
+                    movement = 'random'
+                    break
+            except:
+                print('\nerror in user input, please try again.\n')
             for char in user_input:
                 if char.lower() in valid_set:
                     movement = user_input

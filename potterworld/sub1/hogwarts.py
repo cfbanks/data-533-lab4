@@ -1,6 +1,10 @@
 from math import floor
 from numpy.random import choice
 
+class InsufficientBalance(Exception):
+    def __init__(self):
+        print("\nInsufficient balance, please exchange at least 1 dollar.\n")
+
 class Hogwarts:
     """
     This class represents the super class of Hogwarts to be inherited by Wizard class.
@@ -100,12 +104,15 @@ class Hogwarts:
         currency -- (int, float) the amount of canadian currency
         '''
         if isinstance(currency, (int, float)):
-            self.Golden_Galleons = floor(currency / 246.50)
-            self.Silver_Sickles = floor((currency - self.Golden_Galleons * 246.50) / 14.50)
-            self.Bronze_Knuts = floor((currency - self.Golden_Galleons * 246.50 - self.Silver_Sickles * 14.50) / 0.50)
-            message = f'Currency exchange completed.\n'  \
-                      f'You currently have {self.Golden_Galleons} Golden Galleons, {self.Silver_Sickles} Silver Sickles, and {self.Bronze_Knuts} Bronze Knuts.'
-            print(message)
+            if currency < 1:
+                raise InsufficientBalance
+            else:
+                self.Golden_Galleons = floor(currency / 246.50)
+                self.Silver_Sickles = floor((currency - self.Golden_Galleons * 246.50) / 14.50)
+                self.Bronze_Knuts = floor((currency - self.Golden_Galleons * 246.50 - self.Silver_Sickles * 14.50) / 0.50)
+                message = f'Currency exchange completed.\n'  \
+                        f'You currently have {self.Golden_Galleons} Golden Galleons, {self.Silver_Sickles} Silver Sickles, and {self.Bronze_Knuts} Bronze Knuts.'
+                print(message)
         else:
             print("Please enter a valid number of canadian dollars, for example: gringotts(10000) , gringotts(5010.50)")
         print(' ')
@@ -124,12 +131,17 @@ class Hogwarts:
         wood_type = choice(['Ash', 'Black Walnut', 'Cedar', 'Cherry', 'Elm', 'Hawthorn', 'Poplar', 'Red Oak', 'Sycamore', 'Walnut'])
         core = choice(['Unicorn Hair', 'Dragon Heart String', 'Pheonix Feather'])
         length = choice([9,10,11,12,13,14])
-        if self.Golden_Galleons > 0:
-            self.Golden_Galleons -= 1
-        elif self.Silver_Sickles > 0:
-            self.Silver_Sickles -= 1
-        elif self.Bronze_Knuts > 0:
-            self.Bronze_Knuts -= 1
+        if self.Golden_Galleons == 0 & self.Silver_Sickles == 0 & self.Bronze_Knuts == 0:
+            raise InsufficientBalance
+        else:
+            if self.Golden_Galleons > 0:
+                self.Golden_Galleons -= 1
+            elif self.Silver_Sickles > 0:
+                self.Silver_Sickles -= 1
+            elif self.Bronze_Knuts > 0:
+                self.Bronze_Knuts -= 1
+            else:
+                print('Wand purchase not successful, try again after updating currency.')
         print(f'Your updated currency balance is {self.Golden_Galleons} Golden Galleons, {self.Silver_Sickles} Silver Sickles, and {self.Bronze_Knuts} Bronze Knuts.')
         print(' ')
         return (wood_type, core, length)

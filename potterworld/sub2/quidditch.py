@@ -1,5 +1,9 @@
 from numpy.random import choice
 
+class InvalidRating(Exception):
+    def __init__(self):
+        print("\nInvalid House rating, cannot play Quidditch at this time.\nPlease get assigned to a house and play again..\n")
+
 def quidditch(rating, points, house):
     """
     This function selects the winner of the first game of Quidditch game based on house rating of the wizard. 
@@ -12,9 +16,13 @@ def quidditch(rating, points, house):
     rating - (int or float) - represents the house rating of the player.
     points - (int or float) - represents house cup points of the player's house.
     house - (str) - represents the house of the player.
-    """      
-    plus_minus = 0
-    win_flag = choice(a = [0,1], size = 1, p = [(1-rating), rating])
+    """ 
+    if rating < 0 or rating > 1:
+        win_flag = 0
+        raise InvalidRating
+    else:     
+        plus_minus = 0
+        win_flag = choice(a = [0,1], size = 1, p = [(1-rating), rating])
     if win_flag == 1:
         plus_minus += 10
         print('\nCongratulations !!!')
