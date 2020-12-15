@@ -16,12 +16,14 @@ def duel_voldemort(wand_movement_pattern):
         probability = 0.2
     else:
         print(' ')
-        user_input = input("Enter the magic wand movement pattern you learned earlier: ")
-        if user_input.lower() == wand_movement_pattern:
-            probability = 0.3
-        else:
-            probability = 0.2
-
+        try:
+            user_input = input("Enter the magic wand movement pattern you learned earlier: ")
+            if user_input.lower() == wand_movement_pattern:
+                probability = 0.3
+            else:
+                probability = 0.2
+        except:
+            print('\nerror in user input, please try again.\n')
     obj = learn_spells()
     your_spell = obj.cast_a_spell()
     opponent_spell = obj.cast_a_spell()

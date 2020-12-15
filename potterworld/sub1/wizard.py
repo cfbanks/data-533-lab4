@@ -296,8 +296,11 @@ You are dreading the morning when you will have to tell {self.best_friend} and t
         
         Arguments:
         None
-        """         
-        self.house_cup_points = quidditch(self.house_quidditch_rating, self.house_cup_points, self.House)
+        """  
+        try:
+            self.house_cup_points = quidditch(self.house_quidditch_rating, self.house_cup_points, self.House)
+        except:
+            print('\nUnexpected error while playing Quidditch, please try again.\n')
         print(' ')
         print('Go for a night crawl (or) Play Quidditch again (or) fight Lord Voldemort')
         print('Examples:')  
@@ -318,8 +321,8 @@ You are dreading the morning when you will have to tell {self.best_friend} and t
         if self.house_cup_points > 100:
             print(f'\nCongratulations! {self.House} won the house cup!')
         else:
-            temp_dict = Hogwarts.hogwarts_houses_list 
-            winner_house = random.choice(temp.remove(self.House)) 
+            temp_dict = list(Hogwarts.hogwarts_houses_list)
+            winner_house = random.choice(temp_dict.remove(self.House)) 
             print('\nYou did not win the house cup. This years winner is {winner_house}.')  
    
 
@@ -342,7 +345,10 @@ You are dreading the morning when you will have to tell {self.best_friend} and t
         else:
             game_over = 0
             while game_over == 0:
-                (result, your_spell, opponent_spell) = duel_voldemort(self.wand_movement_pattern)
+                try:
+                    (result, your_spell, opponent_spell) = duel_voldemort(self.wand_movement_pattern)
+                except:
+                    print('\nUnexpected error while fighting Lord Voldemort, please try again.\n')
                 self.health_points_for_duel -= 20
                 print(f"\nLord Voldemort's spell was {opponent_spell} : {self.spells_dict[opponent_spell]}.")
                 print(f"\nYour spell was {your_spell} : {self.spells_dict[your_spell]}.")
