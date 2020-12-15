@@ -3,7 +3,7 @@
 
 # potterworld package
 ### Names: Connor Fairbanks, Naveen Chalasani
-### Date: December 4, 2020
+### Date: December 14, 2020
 
 ## General description
 This package allows the user to experience the magical world of Harry Potter. By using the functions/methods, the user assumes a magical identity, joins the hogwarts school of witchcraft and wizardry, and experieces other joys of magical life by playing games like Quidditch, duelling Lord Voldemort, etc.
