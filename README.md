@@ -50,6 +50,7 @@ connor_testing.ipynb
 ## **Package:**
 - Package name uploaded to PyPI: potterworld
 - **Important**: To start using the package, write `from potterworld import *`, If you just write "import potterworld", the package may not work properly.
+- https://pypi.org/project/potterworld/
 
 ____________
 
