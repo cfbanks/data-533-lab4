@@ -1,4 +1,7 @@
-# 533lab4
+# Names: Connor Fairbanks, Naveen Chalasani
+## Date: December 17, 2020
+
+## **Status badge**
 ![CI-potterworld](https://github.com/cfbanks/data-533-lab4/workflows/CI-potterworld/badge.svg)
 
 ## **Continuous Integration:**
