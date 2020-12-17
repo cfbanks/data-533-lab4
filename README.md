@@ -2,7 +2,7 @@
 ![CI-potterworld](https://github.com/cfbanks/data-533-lab4/workflows/CI-potterworld/badge.svg)
 
 ## **Continuous Integration:**
-- See screenshot (`actions_screenshot.png`) of the github actions page used for CI. 
+- See screenshot `actions_screenshot.png` of the github actions page used for CI. 
 - See `.github/workflows/main.yml` file for the CI workflow script (used instead of Travis CI)
 
 ## **Github Collaboration:**
